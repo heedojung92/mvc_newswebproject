@@ -13,7 +13,6 @@ import java.util.TreeMap;
 import com.vo.NewsVO;
 
 public class NewsStatHelper {
-	static NewsStatHelper nsh=new NewsStatHelper();
 	private List<NewsVO> newsList;
 	public NewsStatHelper() {
 		super();
@@ -130,7 +129,7 @@ public class NewsStatHelper {
 						}
 				}
 		} else {
-			newsList.stream().filter(nv->nv.getNews_sid().equals(nsh.catConverter(data_choice)));
+			newsList.stream().filter(nv->nv.getNews_sid().equals(this.catConverter(data_choice)));
 			for(NewsVO nv:newsList) {
 				String date=nv.getNews_date().split("@")[0];
 				if(map.containsKey(date)) {
@@ -172,7 +171,7 @@ public class NewsStatHelper {
 					}
 			}
 		} else {
-			newsList.stream().filter(nv->nv.getNews_sid().equals(nsh.catConverter(data_choice)));
+			newsList.stream().filter(nv->nv.getNews_sid().equals(this.catConverter(data_choice)));
 			for(NewsVO nv:newsList) {
 				String date=nv.getNews_date();
 				String value=nv.getNews_pub();
@@ -206,7 +205,7 @@ public class NewsStatHelper {
 	public Map<String, Integer> newsCatStat() {
 		Map<String, Integer> map = new HashMap<>();
 		for (NewsVO nv : newsList) {
-			String news_cat = nsh.sidConverter(nv.getNews_sid());
+			String news_cat = this.sidConverter(nv.getNews_sid());
 			if (map.containsKey(news_cat)) {
 				map.put(news_cat, map.get(news_cat) + 1);
 			} else {
@@ -233,5 +232,11 @@ public class NewsStatHelper {
 			}
 		}
 		return map;
+	}
+	private static class NewsStatHolder{
+		public static final NewsStatHelper instance=new NewsStatHelper();
+	}
+	public static NewsStatHelper getInstance() {
+		return NewsStatHolder.instance;
 	}
 }

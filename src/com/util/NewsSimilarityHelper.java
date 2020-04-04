@@ -21,7 +21,7 @@ import com.vo.NewsVO;
 
 public class NewsSimilarityHelper {
 	static NewsBiz nb = new NewsBiz();
-	static HashTagGenerator htg=new HashTagGenerator();
+	HashTagGenerator htg = HashTagGenerator.getInstance();
 	private NewsVO nv;
 
 	public NewsSimilarityHelper() {
@@ -178,7 +178,7 @@ public class NewsSimilarityHelper {
 				cossim.put(n, cossimval);
 			}
 		}
-		Map<NewsVO, Double> sorted = new NewsSimilarityHelper().topNSimilarity(cossim, 8);
+		Map<NewsVO, Double> sorted = this.topNSimilarity(cossim, 8);
 		Set<NewsVO> newsset = sorted.keySet();
 		return newsset;
 	}
@@ -196,7 +196,7 @@ public class NewsSimilarityHelper {
 				jaccardsim.put(n, jaccardsimval);
 			}
 		}
-		Map<NewsVO, Double> sorted = new NewsSimilarityHelper().topNSimilarity(jaccardsim, 8);
+		Map<NewsVO, Double> sorted = this.topNSimilarity(jaccardsim, 8);
 		Set<NewsVO> newsset = sorted.keySet();
 		return newsset;
 	}
@@ -213,7 +213,7 @@ public class NewsSimilarityHelper {
 				closeNews.put(n, eucldist);
 			}
 		}
-		Map<NewsVO, Double> sorted = new NewsSimilarityHelper().topNReverseSimilarity(closeNews, 8);
+		Map<NewsVO, Double> sorted = this.topNReverseSimilarity(closeNews, 8);
 		Set<NewsVO> newsset = sorted.keySet();
 		return newsset;
 	}
@@ -230,7 +230,7 @@ public class NewsSimilarityHelper {
 					closeNews.put(n, manhattandist);
 				}
 			}
-			Map<NewsVO, Double> sorted = new NewsSimilarityHelper().topNReverseSimilarity(closeNews, 8);
+			Map<NewsVO, Double> sorted = this.topNReverseSimilarity(closeNews, 8);
 			Set<NewsVO> newsset = sorted.keySet();
 			return newsset;
 		}

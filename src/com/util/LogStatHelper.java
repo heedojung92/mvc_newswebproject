@@ -259,11 +259,9 @@ public class LogStatHelper {
 						continue;
 
 					} else {
-//						System.out.println("오호라");
 //						System.out.println(elementHour);
 //						System.out.println(hour);
 						if (elementHour.equals(String.valueOf(hour))) {
-//							System.out.println("증감");
 							checker.put(ipUnique, 1);
 							ipCount++;
 						}

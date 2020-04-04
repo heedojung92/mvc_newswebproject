@@ -32,7 +32,11 @@ import kr.co.shineware.nlp.komoran.model.KomoranResult;
 
 public class HashTagGenerator implements Serializable{	
 	static Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);    
-	static HashTagGenerator htg=new HashTagGenerator();
+	private static final HashTagGenerator htg=new HashTagGenerator();
+	
+	public static HashTagGenerator getInstance() {
+		return htg;
+	}
 	
 	public List<String>listedComps(){
 		List<String> compNames = new ArrayList<>();

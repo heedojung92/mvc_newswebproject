@@ -18,7 +18,7 @@ import com.vo.NewsVO;
 
 //JavaRDD를 사용하여 MR작업을 한다.
 public class MapReduce implements Serializable {
-	static HashTagGenerator htg = new HashTagGenerator();
+	HashTagGenerator htg = HashTagGenerator.getInstance();
 	
 	class KeyWordNonCommutativeRelation implements Function<Map<String, Integer>, Map<String, Map<String, Double>>> {
 		@Override

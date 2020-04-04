@@ -28,11 +28,10 @@ import com.vo.NewsVO;
 @Controller
 public class StatController {
 	static NewsBiz nb = new NewsBiz();
-	static NewsStatHelper nsh=new NewsStatHelper();
+	NewsStatHelper nsh=NewsStatHelper.getInstance();
 	
 	@RequestMapping("/news_stat.do")
 	public ModelAndView newsstat(HttpServletRequest request) {
-		NewsStatHelper nsh=new NewsStatHelper();
 		List<NewsVO>todayNews=nb.getNewsByDate(new DateStringHelper().getCurrentDate());
 		nsh.setNewsList(todayNews);
 		Map<String,Integer>newsPub=nsh.getTopN(nsh.newsPubStat(), 15);
@@ -57,9 +56,8 @@ public class StatController {
 		String today=new DateStringHelper().getCurrentDate();
 		String aMonthBefore=new DateStringHelper().nDaysBefore(today, 30);
 		List<NewsVO>news_history=nb.getNewsBetweenDates(aMonthBefore, today);
-		NewsStatHelper ns=new NewsStatHelper();
-		ns.setNewsList(news_history);		
-		Map<String, Integer> time_series_data=ns.getTimeSeriesData(data_choice, chart_choice);		
+		nsh.setNewsList(news_history);		
+		Map<String, Integer> time_series_data=nsh.getTimeSeriesData(data_choice, chart_choice);		
 		JSONObject obj=new JSONObject();
 		obj.put("time_data",time_series_data);
 		try {

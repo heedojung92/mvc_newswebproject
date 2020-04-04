@@ -29,7 +29,7 @@ import com.vo.NewsVO;
 @Controller
 public class MyPageController {
 	static MemberBiz mb = new MemberBiz();
-	static NewsStatHelper nsh = new NewsStatHelper();
+	NewsStatHelper nsh=NewsStatHelper.getInstance();
 	static NewsBiz nb = new NewsBiz();
 	
 

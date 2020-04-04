@@ -29,8 +29,8 @@ import com.vo.NewsVO;
 public class HashTagController {
 	static NewsBiz nb = new NewsBiz();
 	static HashTagBiz htb=new HashTagBiz();
-	static NewsStatHelper nsh = new NewsStatHelper();
-	static HashTagGenerator htg = new HashTagGenerator();
+	NewsStatHelper nsh=NewsStatHelper.getInstance();
+	HashTagGenerator htg = HashTagGenerator.getInstance();
 	static DateStringHelper dsh=new DateStringHelper();
 	
 	
