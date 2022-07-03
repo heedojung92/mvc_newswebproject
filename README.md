@@ -1,4 +1,5 @@
 뉴스 분석 웹사이트
+프레젠테이션 파일: https://docs.google.com/presentation/d/1tPPXXCNIGfA0qG04DxKekvxPhV5SWECJUixQ6fPi-HA/edit?usp=sharing
 주요 기능 설명
 
  (Model) 
